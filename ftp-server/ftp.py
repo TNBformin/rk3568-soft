@@ -13,8 +13,8 @@ class FtpThread(threading.Thread):
     def run(self):
         # Настройка авторизатора
         authorizer = DummyAuthorizer()
-        authorizer.add_user("horizont", "root", ".", perm="elradfmw")
-        authorizer.add_anonymous(".", perm="elradfmw")
+        authorizer.add_user("horizont", "root", "/home/rk3568-soft", perm="elradfmw")
+        authorizer.add_anonymous("/home/rk3568-soft", perm="elradfmw")
 
         # Настройка обработчика
         handler = FTPHandler
