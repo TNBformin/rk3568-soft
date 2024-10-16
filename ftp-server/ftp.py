@@ -24,7 +24,7 @@ class FtpThread(threading.Thread):
         logging.basicConfig(filename='pyftpd.log', level=logging.INFO)
 
         # Настройка сервера
-        address = ("192.168.11.233", 21)
+        address = ("", 21)
         while(True):
             try:
                 self.server = FTPServer(address, handler)
