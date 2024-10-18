@@ -10,7 +10,7 @@ ser = serial.Serial('/dev/ttyS9', 115200)
 async def data_write(resp):
     with open('uart_log.txt', 'a+') as file:
         named_tuple = time.localtime()
-        timestamp = time.strftime("%m/%d/%Y, %H:%M:%S", named_tuple)
+        timestamp = time.strftime("%m/%d/%Y %H:%M:%S", named_tuple)
         data = f"INFO {timestamp}   Received data: {resp.decode('utf-8', errors='ignore')}\n"
         file.write(data)
 
