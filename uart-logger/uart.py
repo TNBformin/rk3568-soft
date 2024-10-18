@@ -1,6 +1,9 @@
 import serial
 import asyncio
 import time
+import os
+
+os.system('stty -F /dev/ttyS9 115200 cs8 -cstopb -parenb')
 
 ser = serial.Serial('/dev/ttyS9', 115200)
 
