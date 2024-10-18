@@ -1,4 +1,4 @@
-import pyserial
+import serial
 import asyncio
 import time
 
