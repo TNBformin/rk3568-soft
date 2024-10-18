@@ -57,6 +57,31 @@ sudo systemctl status pyftpd.service
 sudo python3 -m pip install pyserial
 sudo python3 -m pip install asyncio
 
+# Создание собсвенного сервиса для uart логгера
+# Создание файла службы systemd
+SERVICE_FILE="/etc/systemd/system/pyuartlogger.service"
+
+echo "[Unit]
+Description=My Python Script Daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/rk3568-soft/uart-logger/uart.py
+Restart=always
+User=root
+WorkingDirectory=/home/rk3568-soft/uart-logger/
+
+[Install]
+WantedBy=multi-user.target" | sudo tee $SERVICE_FILE
+
+# Перезагрузка конфигурации systemd
+sudo systemctl daemon-reload
+
+# Запуск и включение службы
+sudo systemctl start pyuartlogger.service
+sudo systemctl enable pyuartlogger.service
+sudo systemctl status pyuartlogger.service
 
 #----------------------------------------------------------------#
 #---------------Установка и наладка uart логгера-----------------#
